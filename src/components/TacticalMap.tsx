@@ -94,7 +94,7 @@ export function TacticalMap({ className }: { className?: string }) {
 
       {/* Crisp continent outlines — no fill, no blur, no glow. */}
       <g
-        fill="var(--map-land-fill)"
+        fill="none"
         stroke="var(--map-line)"
         strokeWidth="0.9"
         strokeLinejoin="round"
