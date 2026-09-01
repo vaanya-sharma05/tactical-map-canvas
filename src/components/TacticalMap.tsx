@@ -63,7 +63,7 @@ export function TacticalMap({ className }: { className?: string }) {
   }, []);
 
   const pins = CITIES.map((c) => ({ ...c, p: project(c.lon, c.lat) }));
-  const arcs = ROUTES.map(([f, t]) => arcPath(pins[f].p, pins[t].p));
+  const arcs = ROUTES.map(([f, t]) => arcPath(pins[f]!.p, pins[t]!.p));
 
   return (
     <svg
