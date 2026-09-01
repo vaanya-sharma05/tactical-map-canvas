@@ -195,3 +195,18 @@
   transform-origin: center;
   animation: pin-pulse 3s ease-out infinite;
 }
+
+/* Sparkle twinkle — crisp points, no bloom */
+@keyframes sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.map-sparkle {
+  animation: sparkle-twinkle 3s ease-in-out infinite;
+}

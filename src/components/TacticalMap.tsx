@@ -62,6 +62,18 @@ export function TacticalMap({ className }: { className?: string }) {
     return lines;
   }, []);
 
+  const sparkles = useMemo(() => {
+    let seed = 7;
+    const rand = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+    return Array.from({ length: 110 }, () => ({
+      x: rand() * MAP_W,
+      y: rand() * MAP_H,
+      r: 0.4 + rand() * 0.8,
+      d: rand() * 4,
+      t: 2 + rand() * 3,
+    }));
+  }, []);
+
   const pins = CITIES.map((c) => ({ ...c, p: project(c.lon, c.lat) }));
   const arcs = ROUTES.map(([f, t]) => arcPath(pins[f]!.p, pins[t]!.p));
 
@@ -123,20 +135,17 @@ export function TacticalMap({ className }: { className?: string }) {
         ))}
       </g>
 
-      {/* Sharp pin markers. */}
-      <g>
-        {pins.map((c, i) => (
-          <g key={c.name} transform={`translate(${c.p[0]},${c.p[1]})`}>
-            <circle
-              r="6"
-              fill="none"
-              stroke="var(--map-arc)"
-              strokeWidth="0.8"
-              className="map-pin-ring"
-              style={{ animationDelay: `${i * 0.3}s` }}
-            />
-            <circle r="2" fill="var(--map-pin)" />
-          </g>
+      {/* Sparkle layer — tiny crisp twinkling points, no bloom. */}
+      <g fill="var(--map-pin)">
+        {sparkles.map((s, i) => (
+          <circle
+            key={i}
+            cx={s.x}
+            cy={s.y}
+            r={s.r}
+            className="map-sparkle"
+            style={{ animationDelay: `${s.d}s`, animationDuration: `${s.t}s` }}
+          />
         ))}
       </g>
     </svg>
