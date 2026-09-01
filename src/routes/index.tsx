@@ -1,20 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { TacticalMap } from "@/components/TacticalMap";
+import { Radar, Ticket } from "lucide-react";
+import { OpsMap } from "@/components/OpsMap";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Global Ops Summit 2026 — Worldwide Tech Conference" },
+      { title: "INTEL X — Operation Taskari | Underground Ops Summit 2026" },
       {
         name: "description",
         content:
-          "Global Ops Summit 2026: three days, ten cities, one network. Join engineers and operators for a worldwide conference on distributed systems.",
+          "INTEL X: a 72-hour clandestine operation. Explore the tactical world map, open the classified boarding passes and acquire your seat before the last gate shuts.",
       },
-      { property: "og:title", content: "Global Ops Summit 2026" },
+      { property: "og:title", content: "INTEL X — Operation Taskari" },
       {
         property: "og:description",
         content:
-          "Three days, ten cities, one network. A worldwide conference for engineers and operators.",
+          "A 72-hour clandestine operation. Tap the map pins to open your classified boarding passes.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -23,84 +24,49 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const STATS = [
-  { label: "Host cities", value: "10" },
-  { label: "Speakers", value: "84" },
-  { label: "Days", value: "03" },
-  { label: "Time zones", value: "16" },
-];
-
 function Index() {
   return (
-    <main className="relative min-h-screen overflow-hidden" style={{ backgroundColor: "var(--map-bg)" }}>
-      {/* Crisp tactical map backdrop */}
-      <div className="pointer-events-none absolute inset-0">
-        <TacticalMap className="h-full w-full opacity-90" />
-      </div>
-
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-between px-6 py-10">
+    <main
+      className="relative min-h-screen overflow-x-hidden"
+      style={{ backgroundColor: "var(--map-bg)" }}
+    >
+      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-5 py-8 sm:px-8">
         <header className="flex items-center justify-between">
-          <span className="font-mono text-xs uppercase tracking-[0.35em] text-primary">
-            GOS//2026
+          <span className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+            <Radar className="size-4" />
+            INTEL X
           </span>
-          <nav className="flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            <a href="#stats" className="transition-colors hover:text-foreground">
-              Program
-            </a>
-            <a href="#cities" className="transition-colors hover:text-foreground">
-              Cities
-            </a>
-            <a
-              href="#register"
-              className="rounded-sm border border-primary px-3 py-1.5 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-            >
-              Register
-            </a>
-          </nav>
+          <a
+            href="#map"
+            className="rounded-sm border border-primary/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground sm:text-xs"
+          >
+            Register
+          </a>
         </header>
 
-        <section className="max-w-2xl py-20">
-          <p className="font-mono text-xs uppercase tracking-[0.4em] text-primary">
-            14—16 October · Worldwide
+        <section className="pt-14 text-center sm:pt-20">
+          <p className="font-mono text-[10px] uppercase tracking-[0.45em] text-primary sm:text-xs">
+            Operation Taskari · No questions asked
           </p>
-          <h1 className="mt-5 text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-7xl">
-            Global Ops
+          <h1 className="mx-auto mt-5 max-w-4xl font-display text-4xl font-semibold uppercase leading-[1.05] tracking-tight text-foreground sm:text-6xl">
+            Move high-stakes cargo
             <br />
-            Summit 2026
+            across every border
           </h1>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
-            Three days, ten cities, one network. Engineers and operators mapping the
-            future of distributed infrastructure — live from every major hub on the
-            grid.
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Tap any station on the grid to open its classified boarding pass.
           </p>
-          <div id="register" className="mt-9 flex flex-wrap gap-3">
-            <a
-              href="#register"
-              className="rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Reserve your seat
-            </a>
-            <a
-              href="#cities"
-              className="rounded-sm border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              View host cities
-            </a>
-          </div>
+          <a
+            href="#map"
+            className="mt-8 inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.25em] text-primary-foreground shadow-[0_0_28px_-4px_color-mix(in_oklab,var(--primary)_75%,transparent)] transition-opacity hover:opacity-90"
+          >
+            <Ticket className="size-4" />
+            Acquire boarding pass
+          </a>
         </section>
 
-        <section
-          id="stats"
-          className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-4"
-        >
-          {STATS.map((s) => (
-            <div key={s.label} className="bg-card/80 px-5 py-6 backdrop-blur-sm">
-              <div className="font-mono text-3xl text-foreground">{s.value}</div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                {s.label}
-              </div>
-            </div>
-          ))}
+        <section id="map" className="mt-12 pb-16">
+          <OpsMap />
         </section>
       </div>
     </main>
