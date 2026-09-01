@@ -73,8 +73,8 @@ export function OpsMap() {
             <span
               className={
                 pin.main
-                  ? "whitespace-nowrap rounded-sm border border-primary/60 bg-background/80 px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-foreground shadow-[0_0_16px_-2px_color-mix(in_oklab,var(--primary)_55%,transparent)] backdrop-blur-sm transition-colors group-hover:border-primary group-hover:text-primary sm:text-xs"
-                  : "whitespace-nowrap rounded-sm border border-primary/25 bg-background/60 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm transition-colors group-hover:border-primary/70 group-hover:text-foreground sm:text-[10px]"
+                  ? "whitespace-nowrap rounded-sm border border-primary/60 bg-background/80 px-2.5 py-1 font-display text-xs font-semibold uppercase tracking-[0.14em] text-foreground shadow-[0_0_16px_-2px_color-mix(in_oklab,var(--primary)_55%,transparent)] backdrop-blur-sm transition-colors group-hover:border-primary group-hover:text-primary sm:text-sm"
+                  : "whitespace-nowrap rounded-sm border border-primary/25 bg-background/60 px-1.5 py-0.5 font-display text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground backdrop-blur-sm transition-colors group-hover:border-primary/70 group-hover:text-foreground sm:text-[11px]"
               }
             >
               {pin.label}
